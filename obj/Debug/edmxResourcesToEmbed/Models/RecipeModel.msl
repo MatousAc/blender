@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="blenderModelStoreContainer" CdmEntityContainer="blenderEntities">
+    <EntitySetMapping Name="authors">
+      <EntityTypeMapping TypeName="blenderModel.author">
+        <MappingFragment StoreEntitySet="author">
+          <ScalarProperty Name="authorship_id" ColumnName="authorship_id" />
+          <ScalarProperty Name="chef_id" ColumnName="chef_id" />
+          <ScalarProperty Name="recipe_id" ColumnName="recipe_id" />
+          <ScalarProperty Name="created" ColumnName="created" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="categories">
+      <EntityTypeMapping TypeName="blenderModel.category">
+        <MappingFragment StoreEntitySet="category">
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="chefs">
+      <EntityTypeMapping TypeName="blenderModel.chef">
+        <MappingFragment StoreEntitySet="chef">
+          <ScalarProperty Name="chef_id" ColumnName="chef_id" />
+          <ScalarProperty Name="first_name" ColumnName="first_name" />
+          <ScalarProperty Name="last_name" ColumnName="last_name" />
+          <ScalarProperty Name="profile" ColumnName="profile" />
+          <ScalarProperty Name="dob" ColumnName="dob" />
+          <ScalarProperty Name="bio" ColumnName="bio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ingredients">
+      <EntityTypeMapping TypeName="blenderModel.ingredient">
+        <MappingFragment StoreEntitySet="ingredient">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="source" ColumnName="source" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="color" ColumnName="color" />
+          <ScalarProperty Name="description" ColumnName="description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="recipes">
+      <EntityTypeMapping TypeName="blenderModel.recipe">
+        <MappingFragment StoreEntitySet="recipe">
+          <ScalarProperty Name="recipe_id" ColumnName="recipe_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="instructions" ColumnName="instructions" />
+          <ScalarProperty Name="serves" ColumnName="serves" />
+          <ScalarProperty Name="prep_mins" ColumnName="prep_mins" />
+          <ScalarProperty Name="cook_mins" ColumnName="cook_mins" />
+          <ScalarProperty Name="calories" ColumnName="calories" />
+          <ScalarProperty Name="skill_level" ColumnName="skill_level" />
+          <ScalarProperty Name="visual" ColumnName="visual" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="recipe_category">
+      <EntityTypeMapping TypeName="blenderModel.recipe_category">
+        <MappingFragment StoreEntitySet="recipe_category">
+          <ScalarProperty Name="categorization_id" ColumnName="categorization_id" />
+          <ScalarProperty Name="recipe_id" ColumnName="recipe_id" />
+          <ScalarProperty Name="category" ColumnName="category" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="requires">
+      <EntityTypeMapping TypeName="blenderModel.require">
+        <MappingFragment StoreEntitySet="requires">
+          <ScalarProperty Name="requirement_id" ColumnName="requirement_id" />
+          <ScalarProperty Name="recipe_id" ColumnName="recipe_id" />
+          <ScalarProperty Name="ingredient" ColumnName="ingredient" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="units" ColumnName="units" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="skill_level">
+      <EntityTypeMapping TypeName="blenderModel.skill_level">
+        <MappingFragment StoreEntitySet="skill_level">
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="units">
+      <EntityTypeMapping TypeName="blenderModel.unit">
+        <MappingFragment StoreEntitySet="unit">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="system" ColumnName="system" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="unit_system">
+      <EntityTypeMapping TypeName="blenderModel.unit_system">
+        <MappingFragment StoreEntitySet="unit_system">
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="unit_type">
+      <EntityTypeMapping TypeName="blenderModel.unit_type">
+        <MappingFragment StoreEntitySet="unit_type">
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

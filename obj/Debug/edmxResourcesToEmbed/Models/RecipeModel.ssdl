@@ -1,0 +1,270 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="blenderModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="author">
+    <Key>
+      <PropertyRef Name="authorship_id" />
+    </Key>
+    <Property Name="authorship_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="chef_id" Type="int" Nullable="false" />
+    <Property Name="recipe_id" Type="int" Nullable="false" />
+    <Property Name="created" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="category">
+    <Key>
+      <PropertyRef Name="name" />
+    </Key>
+    <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="chef">
+    <Key>
+      <PropertyRef Name="chef_id" />
+    </Key>
+    <Property Name="chef_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="first_name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="last_name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="profile" Type="image" />
+    <Property Name="dob" Type="date" Nullable="false" />
+    <Property Name="bio" Type="text" />
+  </EntityType>
+  <EntityType Name="ingredient">
+    <Key>
+      <PropertyRef Name="name" />
+    </Key>
+    <Property Name="name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="source" Type="text" />
+    <Property Name="price" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="color" Type="varchar" MaxLength="100" />
+    <Property Name="description" Type="text" />
+  </EntityType>
+  <EntityType Name="recipe">
+    <Key>
+      <PropertyRef Name="recipe_id" />
+    </Key>
+    <Property Name="recipe_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="instructions" Type="text" Nullable="false" />
+    <Property Name="serves" Type="int" Nullable="false" />
+    <Property Name="prep_mins" Type="int" Nullable="false" />
+    <Property Name="cook_mins" Type="int" Nullable="false" />
+    <Property Name="calories" Type="int" Nullable="false" />
+    <Property Name="skill_level" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="visual" Type="image" />
+  </EntityType>
+  <EntityType Name="recipe_category">
+    <Key>
+      <PropertyRef Name="categorization_id" />
+    </Key>
+    <Property Name="categorization_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="recipe_id" Type="int" Nullable="false" />
+    <Property Name="category" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="requires">
+    <Key>
+      <PropertyRef Name="requirement_id" />
+    </Key>
+    <Property Name="requirement_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="recipe_id" Type="int" Nullable="false" />
+    <Property Name="ingredient" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="amount" Type="int" Nullable="false" />
+    <Property Name="units" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="skill_level">
+    <Key>
+      <PropertyRef Name="name" />
+    </Key>
+    <Property Name="name" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="unit">
+    <Key>
+      <PropertyRef Name="name" />
+    </Key>
+    <Property Name="name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="type" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="system" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="unit_system">
+    <Key>
+      <PropertyRef Name="name" />
+    </Key>
+    <Property Name="name" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="unit_type">
+    <Key>
+      <PropertyRef Name="name" />
+    </Key>
+    <Property Name="name" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <Association Name="author_chef">
+    <End Role="chef" Type="Self.chef" Multiplicity="1" />
+    <End Role="author" Type="Self.author" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="chef">
+        <PropertyRef Name="chef_id" />
+      </Principal>
+      <Dependent Role="author">
+        <PropertyRef Name="chef_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="author_recipe">
+    <End Role="recipe" Type="Self.recipe" Multiplicity="1" />
+    <End Role="author" Type="Self.author" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="recipe">
+        <PropertyRef Name="recipe_id" />
+      </Principal>
+      <Dependent Role="author">
+        <PropertyRef Name="recipe_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="measurement_system">
+    <End Role="unit_system" Type="Self.unit_system" Multiplicity="1" />
+    <End Role="unit" Type="Self.unit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="unit_system">
+        <PropertyRef Name="name" />
+      </Principal>
+      <Dependent Role="unit">
+        <PropertyRef Name="system" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="measurement_type">
+    <End Role="unit_type" Type="Self.unit_type" Multiplicity="1" />
+    <End Role="unit" Type="Self.unit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="unit_type">
+        <PropertyRef Name="name" />
+      </Principal>
+      <Dependent Role="unit">
+        <PropertyRef Name="type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="recipe_category_category">
+    <End Role="category" Type="Self.category" Multiplicity="1" />
+    <End Role="recipe_category" Type="Self.recipe_category" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="category">
+        <PropertyRef Name="name" />
+      </Principal>
+      <Dependent Role="recipe_category">
+        <PropertyRef Name="category" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="recipe_category_recipe">
+    <End Role="recipe" Type="Self.recipe" Multiplicity="1" />
+    <End Role="recipe_category" Type="Self.recipe_category" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="recipe">
+        <PropertyRef Name="recipe_id" />
+      </Principal>
+      <Dependent Role="recipe_category">
+        <PropertyRef Name="recipe_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="recipe_level">
+    <End Role="skill_level" Type="Self.skill_level" Multiplicity="1" />
+    <End Role="recipe" Type="Self.recipe" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="skill_level">
+        <PropertyRef Name="name" />
+      </Principal>
+      <Dependent Role="recipe">
+        <PropertyRef Name="skill_level" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="requires_measurement">
+    <End Role="unit" Type="Self.unit" Multiplicity="1" />
+    <End Role="requires" Type="Self.requires" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="unit">
+        <PropertyRef Name="name" />
+      </Principal>
+      <Dependent Role="requires">
+        <PropertyRef Name="units" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Table_3_ingredient">
+    <End Role="ingredient" Type="Self.ingredient" Multiplicity="1" />
+    <End Role="requires" Type="Self.requires" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ingredient">
+        <PropertyRef Name="name" />
+      </Principal>
+      <Dependent Role="requires">
+        <PropertyRef Name="ingredient" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Table_3_recipe">
+    <End Role="recipe" Type="Self.recipe" Multiplicity="1" />
+    <End Role="requires" Type="Self.requires" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="recipe">
+        <PropertyRef Name="recipe_id" />
+      </Principal>
+      <Dependent Role="requires">
+        <PropertyRef Name="recipe_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="blenderModelStoreContainer">
+    <EntitySet Name="author" EntityType="Self.author" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="category" EntityType="Self.category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="chef" EntityType="Self.chef" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ingredient" EntityType="Self.ingredient" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="recipe" EntityType="Self.recipe" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="recipe_category" EntityType="Self.recipe_category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="requires" EntityType="Self.requires" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="skill_level" EntityType="Self.skill_level" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="unit" EntityType="Self.unit" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="unit_system" EntityType="Self.unit_system" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="unit_type" EntityType="Self.unit_type" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="author_chef" Association="Self.author_chef">
+      <End Role="chef" EntitySet="chef" />
+      <End Role="author" EntitySet="author" />
+    </AssociationSet>
+    <AssociationSet Name="author_recipe" Association="Self.author_recipe">
+      <End Role="recipe" EntitySet="recipe" />
+      <End Role="author" EntitySet="author" />
+    </AssociationSet>
+    <AssociationSet Name="measurement_system" Association="Self.measurement_system">
+      <End Role="unit_system" EntitySet="unit_system" />
+      <End Role="unit" EntitySet="unit" />
+    </AssociationSet>
+    <AssociationSet Name="measurement_type" Association="Self.measurement_type">
+      <End Role="unit_type" EntitySet="unit_type" />
+      <End Role="unit" EntitySet="unit" />
+    </AssociationSet>
+    <AssociationSet Name="recipe_category_category" Association="Self.recipe_category_category">
+      <End Role="category" EntitySet="category" />
+      <End Role="recipe_category" EntitySet="recipe_category" />
+    </AssociationSet>
+    <AssociationSet Name="recipe_category_recipe" Association="Self.recipe_category_recipe">
+      <End Role="recipe" EntitySet="recipe" />
+      <End Role="recipe_category" EntitySet="recipe_category" />
+    </AssociationSet>
+    <AssociationSet Name="recipe_level" Association="Self.recipe_level">
+      <End Role="skill_level" EntitySet="skill_level" />
+      <End Role="recipe" EntitySet="recipe" />
+    </AssociationSet>
+    <AssociationSet Name="requires_measurement" Association="Self.requires_measurement">
+      <End Role="unit" EntitySet="unit" />
+      <End Role="requires" EntitySet="requires" />
+    </AssociationSet>
+    <AssociationSet Name="Table_3_ingredient" Association="Self.Table_3_ingredient">
+      <End Role="ingredient" EntitySet="ingredient" />
+      <End Role="requires" EntitySet="requires" />
+    </AssociationSet>
+    <AssociationSet Name="Table_3_recipe" Association="Self.Table_3_recipe">
+      <End Role="recipe" EntitySet="recipe" />
+      <End Role="requires" EntitySet="requires" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

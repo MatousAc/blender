@@ -136,15 +136,18 @@
     <Compile Include="Models\author.cs">
       <DependentUpon>RecipeModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\categoriesController.cs" />
     <Compile Include="Models\category.cs">
       <DependentUpon>RecipeModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\chef.cs">
       <DependentUpon>RecipeModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\chefsController.cs" />
     <Compile Include="Models\ingredient.cs">
       <DependentUpon>RecipeModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\ingredientsController.cs" />
     <Compile Include="Models\recipe.cs">
       <DependentUpon>RecipeModel.tt</DependentUpon>
     </Compile>
@@ -163,9 +166,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RecipeModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\recipesController.cs" />
     <Compile Include="Models\recipe_category.cs">
       <DependentUpon>RecipeModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\recipe_partial.cs" />
+    <Compile Include="Models\_recipe.cs" />
     <Compile Include="Models\require.cs">
       <DependentUpon>RecipeModel.tt</DependentUpon>
     </Compile>
@@ -175,6 +181,7 @@
     <Compile Include="Models\unit.cs">
       <DependentUpon>RecipeModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\unitsController.cs" />
     <Compile Include="Models\unit_system.cs">
       <DependentUpon>RecipeModel.tt</DependentUpon>
     </Compile>
@@ -243,9 +250,36 @@
     <Content Include="Views\unitType\Details.cshtml" />
     <Content Include="Views\unitType\Edit.cshtml" />
     <Content Include="Views\unitType\Index.cshtml" />
+    <Content Include="Views\units\Create.cshtml" />
+    <Content Include="Views\units\Delete.cshtml" />
+    <Content Include="Views\units\Details.cshtml" />
+    <Content Include="Views\units\Edit.cshtml" />
+    <Content Include="Views\units\Index.cshtml" />
+    <Content Include="Views\ingredients\Create.cshtml" />
+    <Content Include="Views\ingredients\Delete.cshtml" />
+    <Content Include="Views\ingredients\Details.cshtml" />
+    <Content Include="Views\ingredients\Edit.cshtml" />
+    <Content Include="Views\ingredients\Index.cshtml" />
+    <Content Include="Views\categories\Create.cshtml" />
+    <Content Include="Views\categories\Delete.cshtml" />
+    <Content Include="Views\categories\Details.cshtml" />
+    <Content Include="Views\categories\Edit.cshtml" />
+    <Content Include="Views\categories\Index.cshtml" />
+    <Content Include="Views\chefs\Create.cshtml" />
+    <Content Include="Views\chefs\Delete.cshtml" />
+    <Content Include="Views\chefs\Details.cshtml" />
+    <Content Include="Views\chefs\Edit.cshtml" />
+    <Content Include="Views\chefs\Index.cshtml" />
+    <Content Include="Views\recipes\Create.cshtml" />
+    <Content Include="Views\recipes\Delete.cshtml" />
+    <Content Include="Views\recipes\Details.cshtml" />
+    <Content Include="Views\recipes\Edit.cshtml" />
+    <Content Include="Views\recipes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\RecipeCategoryViewModel\" />
+    <Folder Include="Views\ViewModel\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

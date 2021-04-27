@@ -51,6 +51,8 @@ C:\Users\Ac\Desktop\Code\C#\blender\bin\roslyn\vbc.rsp
 C:\Users\Ac\Desktop\Code\C#\blender\bin\roslyn\VBCSCompiler.exe
 C:\Users\Ac\Desktop\Code\C#\blender\bin\roslyn\VBCSCompiler.exe.config
 C:\Users\Ac\Desktop\Code\C#\blender\bin\Antlr3.Runtime.dll
+C:\Users\Ac\Desktop\Code\C#\blender\bin\EntityFramework.dll
+C:\Users\Ac\Desktop\Code\C#\blender\bin\EntityFramework.SqlServer.dll
 C:\Users\Ac\Desktop\Code\C#\blender\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\Ac\Desktop\Code\C#\blender\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\Ac\Desktop\Code\C#\blender\bin\Newtonsoft.Json.dll
@@ -62,6 +64,8 @@ C:\Users\Ac\Desktop\Code\C#\blender\bin\System.Web.WebPages.Deployment.dll
 C:\Users\Ac\Desktop\Code\C#\blender\bin\System.Web.WebPages.dll
 C:\Users\Ac\Desktop\Code\C#\blender\bin\System.Web.WebPages.Razor.dll
 C:\Users\Ac\Desktop\Code\C#\blender\bin\WebGrease.dll
+C:\Users\Ac\Desktop\Code\C#\blender\bin\EntityFramework.xml
+C:\Users\Ac\Desktop\Code\C#\blender\bin\EntityFramework.SqlServer.xml
 C:\Users\Ac\Desktop\Code\C#\blender\bin\System.Web.Helpers.xml
 C:\Users\Ac\Desktop\Code\C#\blender\bin\System.Web.Mvc.xml
 C:\Users\Ac\Desktop\Code\C#\blender\bin\System.Web.Optimization.xml
@@ -77,7 +81,3 @@ C:\Users\Ac\Desktop\Code\C#\blender\obj\Debug\blender.csproj.CoreCompileInputs.c
 C:\Users\Ac\Desktop\Code\C#\blender\obj\Debug\blender.csproj.CopyComplete
 C:\Users\Ac\Desktop\Code\C#\blender\obj\Debug\blender.dll
 C:\Users\Ac\Desktop\Code\C#\blender\obj\Debug\blender.pdb
-C:\Users\Ac\Desktop\Code\C#\blender\bin\EntityFramework.dll
-C:\Users\Ac\Desktop\Code\C#\blender\bin\EntityFramework.SqlServer.dll
-C:\Users\Ac\Desktop\Code\C#\blender\bin\EntityFramework.xml
-C:\Users\Ac\Desktop\Code\C#\blender\bin\EntityFramework.SqlServer.xml

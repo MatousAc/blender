@@ -1,0 +1,82 @@
+﻿@model blender.Models.recipe
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>recipe</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.instructions)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.instructions)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.serves)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.serves)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.prep_mins)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.prep_mins)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cook_mins)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cook_mins)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.calories)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.calories)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.visual)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.visual)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.skill_level1.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.skill_level1.name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.recipe_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

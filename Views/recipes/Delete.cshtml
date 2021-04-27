@@ -1,0 +1,88 @@
+﻿@model blender.Models.recipe
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>recipe</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.instructions)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.instructions)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.serves)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.serves)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.prep_mins)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.prep_mins)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cook_mins)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cook_mins)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.calories)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.calories)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.visual)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.visual)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.skill_level1.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.skill_level1.name)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

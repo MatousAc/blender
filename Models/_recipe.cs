@@ -58,7 +58,7 @@ namespace blender.Models
 
                     reqs += $"@{amount}%{req.units}%{req.ingredient}";
                 }
-                this._requires = reqs.Substring(1, -1);
+                this._requires = reqs.Substring(1);
             }
 
         public int recipe_id { get; set; }

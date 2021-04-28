@@ -63,7 +63,10 @@ namespace blender.Models
                 db.SaveChanges(); // save it all
                 return RedirectToAction("Index"); // let's go somewhere else
             }
-            ViewBag.skill_level = new SelectList(db.skill_level, "name", "name", _recipe.skill_level);
+            ViewBag.skill_level = new SelectList(db.skill_level, "name", "name"); // gives me a list of skill levels
+            ViewBag.categories = new SelectList(db.categories, "name", "name"); // gives me a select list of all categories
+            ViewBag.ingredients = new SelectList(db.ingredients, "name", "name");
+            ViewBag.units = new SelectList(db.units, "name", "name");
             return View(_recipe);
         }
 
@@ -80,11 +83,12 @@ namespace blender.Models
                 return HttpNotFound();
             }
             
+            _recipe _recipe = new _recipe(recipe);
             ViewBag.skill_level = new SelectList(db.skill_level, "name", "name", recipe.skill_level);
-            ViewBag.categories = new SelectList(db.categories, "name", "name"); // gives me a select list of all categories
+            // this is how to get a list with pre-selected values on it
+            ViewBag.categories = new MultiSelectList(db.categories.ToList(), "name", "name", _recipe.categories);
             ViewBag.ingredients = new SelectList(db.ingredients, "name", "name");
             ViewBag.units = new SelectList(db.units, "name", "name");
-            _recipe _recipe = new _recipe(recipe);
             return View(_recipe);
         }
 
@@ -93,16 +97,33 @@ namespace blender.Models
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "recipe_id,name,instructions,serves,prep_mins,cook_mins,calories,skill_level,visual")] recipe recipe)
+        public ActionResult Edit([Bind(Include =
+            "recipe_id,name,instructions,serves,prep_mins,cook_mins,calories," +
+            "skill_level,categories,visual,_requires")] _recipe _recipe)
         {
             if (ModelState.IsValid)
-            {
-                db.Entry(recipe).State = EntityState.Modified;
-                db.SaveChanges();
+            {   // so this is how we do it:
+                recipe recipe = db.recipes.Find(_recipe.recipe_id); // grab the actual recipe from the database
+                recipe.recipe_category.Clear(); // take out the object's categories and requires
+                recipe.requires.Clear();
+                recipe.update(_recipe); // update the entire recipe object from the _recipe transfer object
+
+                // bellow we just make sure to eliminate any association tuples for the recipe
+                // that are still in the database
+                foreach (recipe_category recat in db.recipe_category.Where(rc => rc.recipe_id == _recipe.recipe_id))
+                    { db.recipe_category.Remove(recat); }
+                foreach (require req in db.requires.Where(r => r.recipe_id == _recipe.recipe_id))
+                    { db.requires.Remove(req); }
+
+                db.Entry(recipe).State = EntityState.Modified; // let the context know we changed stuff in the object representation
+                db.SaveChanges(); // save it all
                 return RedirectToAction("Index");
             }
-            ViewBag.skill_level = new SelectList(db.skill_level, "name", "name", recipe.skill_level);
-            return View(recipe);
+            ViewBag.skill_level = new SelectList(db.skill_level, "name", "name");
+            ViewBag.categories = new SelectList(db.categories, "name", "name");
+            ViewBag.ingredients = new SelectList(db.ingredients, "name", "name");
+            ViewBag.units = new SelectList(db.units, "name", "name");
+            return View(_recipe);
         }
 
         // GET: recipes/Delete/5

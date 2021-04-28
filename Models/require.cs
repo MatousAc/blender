@@ -17,8 +17,9 @@ namespace blender.Models
         public int requirement_id { get; set; }
         public int recipe_id { get; set; }
         public string ingredient { get; set; }
-        public int amount { get; set; }
         public string units { get; set; }
+        public int top { get; set; }
+        public int bottom { get; set; }
     
         public virtual ingredient ingredient1 { get; set; }
         public virtual recipe recipe { get; set; }

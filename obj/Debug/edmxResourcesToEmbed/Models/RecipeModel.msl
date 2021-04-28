@@ -68,10 +68,11 @@
     <EntitySetMapping Name="requires">
       <EntityTypeMapping TypeName="blenderModel.require">
         <MappingFragment StoreEntitySet="requires">
+          <ScalarProperty Name="bottom" ColumnName="bottom" />
+          <ScalarProperty Name="top" ColumnName="top" />
           <ScalarProperty Name="requirement_id" ColumnName="requirement_id" />
           <ScalarProperty Name="recipe_id" ColumnName="recipe_id" />
           <ScalarProperty Name="ingredient" ColumnName="ingredient" />
-          <ScalarProperty Name="amount" ColumnName="amount" />
           <ScalarProperty Name="units" ColumnName="units" />
         </MappingFragment>
       </EntityTypeMapping>

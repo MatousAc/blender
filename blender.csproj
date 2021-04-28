@@ -143,7 +143,6 @@
     <Compile Include="Models\chef.cs">
       <DependentUpon>RecipeModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Controllers\chefsController.cs" />
     <Compile Include="Models\ingredient.cs">
       <DependentUpon>RecipeModel.tt</DependentUpon>
     </Compile>
@@ -188,6 +187,7 @@
     <Compile Include="Models\unit_type.cs">
       <DependentUpon>RecipeModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\_require.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -195,6 +195,15 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <None Include="Content\sass\site.scss">
+      <Generator>SassTranspiler</Generator>
+      <LastGenOutput>site.css</LastGenOutput>
+    </None>
+    <Content Include="Content\sass\site.css">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>site.scss</DependentUpon>
+    </Content>
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -209,6 +218,8 @@
       <DependentUpon>RecipeModel.edmx</DependentUpon>
       <LastGenOutput>RecipeModel.cs</LastGenOutput>
     </Content>
+    <Content Include="Scripts\app.js" />
+    <Content Include="Scripts\requires.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <EntityDeploy Include="Models\RecipeModel.edmx">
@@ -265,11 +276,6 @@
     <Content Include="Views\categories\Details.cshtml" />
     <Content Include="Views\categories\Edit.cshtml" />
     <Content Include="Views\categories\Index.cshtml" />
-    <Content Include="Views\chefs\Create.cshtml" />
-    <Content Include="Views\chefs\Delete.cshtml" />
-    <Content Include="Views\chefs\Details.cshtml" />
-    <Content Include="Views\chefs\Edit.cshtml" />
-    <Content Include="Views\chefs\Index.cshtml" />
     <Content Include="Views\recipes\Create.cshtml" />
     <Content Include="Views\recipes\Delete.cshtml" />
     <Content Include="Views\recipes\Details.cshtml" />

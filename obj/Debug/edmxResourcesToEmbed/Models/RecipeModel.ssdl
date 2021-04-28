@@ -65,7 +65,8 @@
     <Property Name="requirement_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="recipe_id" Type="int" Nullable="false" />
     <Property Name="ingredient" Type="varchar" MaxLength="100" Nullable="false" />
-    <Property Name="amount" Type="int" Nullable="false" />
+    <Property Name="top" Type="int" Nullable="false" />
+    <Property Name="bottom" Type="int" Nullable="false" />
     <Property Name="units" Type="varchar" MaxLength="100" Nullable="false" />
   </EntityType>
   <EntityType Name="skill_level">
@@ -94,8 +95,10 @@
     </Key>
     <Property Name="name" Type="varchar" MaxLength="20" Nullable="false" />
   </EntityType>
-  <Association Name="author_chef">
-    <End Role="chef" Type="Self.chef" Multiplicity="1" />
+  <Association Name="FK__author__chef_id__46B27FE2">
+    <End Role="chef" Type="Self.chef" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="author" Type="Self.author" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="chef">
@@ -106,8 +109,10 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="author_recipe">
-    <End Role="recipe" Type="Self.recipe" Multiplicity="1" />
+  <Association Name="FK__author__recipe_i__47A6A41B">
+    <End Role="recipe" Type="Self.recipe" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="author" Type="Self.author" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="recipe">
@@ -118,55 +123,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="measurement_system">
-    <End Role="unit_system" Type="Self.unit_system" Multiplicity="1" />
-    <End Role="unit" Type="Self.unit" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="unit_system">
-        <PropertyRef Name="name" />
-      </Principal>
-      <Dependent Role="unit">
-        <PropertyRef Name="system" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="measurement_type">
-    <End Role="unit_type" Type="Self.unit_type" Multiplicity="1" />
-    <End Role="unit" Type="Self.unit" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="unit_type">
-        <PropertyRef Name="name" />
-      </Principal>
-      <Dependent Role="unit">
-        <PropertyRef Name="type" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="recipe_category_category">
-    <End Role="category" Type="Self.category" Multiplicity="1" />
-    <End Role="recipe_category" Type="Self.recipe_category" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="category">
-        <PropertyRef Name="name" />
-      </Principal>
-      <Dependent Role="recipe_category">
-        <PropertyRef Name="category" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="recipe_category_recipe">
-    <End Role="recipe" Type="Self.recipe" Multiplicity="1" />
-    <End Role="recipe_category" Type="Self.recipe_category" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="recipe">
-        <PropertyRef Name="recipe_id" />
-      </Principal>
-      <Dependent Role="recipe_category">
-        <PropertyRef Name="recipe_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="recipe_level">
+  <Association Name="FK__recipe__skill_le__3864608B">
     <End Role="skill_level" Type="Self.skill_level" Multiplicity="1" />
     <End Role="recipe" Type="Self.recipe" Multiplicity="*" />
     <ReferentialConstraint>
@@ -178,20 +135,38 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="requires_measurement">
-    <End Role="unit" Type="Self.unit" Multiplicity="1" />
-    <End Role="requires" Type="Self.requires" Multiplicity="*" />
+  <Association Name="FK__recipe_ca__categ__3C34F16F">
+    <End Role="category" Type="Self.category" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="recipe_category" Type="Self.recipe_category" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="unit">
+      <Principal Role="category">
         <PropertyRef Name="name" />
       </Principal>
-      <Dependent Role="requires">
-        <PropertyRef Name="units" />
+      <Dependent Role="recipe_category">
+        <PropertyRef Name="category" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="Table_3_ingredient">
-    <End Role="ingredient" Type="Self.ingredient" Multiplicity="1" />
+  <Association Name="FK__recipe_ca__recip__3D2915A8">
+    <End Role="recipe" Type="Self.recipe" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="recipe_category" Type="Self.recipe_category" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="recipe">
+        <PropertyRef Name="recipe_id" />
+      </Principal>
+      <Dependent Role="recipe_category">
+        <PropertyRef Name="recipe_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__requires__ingred__503BEA1C">
+    <End Role="ingredient" Type="Self.ingredient" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="requires" Type="Self.requires" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="ingredient">
@@ -202,8 +177,10 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="Table_3_recipe">
-    <End Role="recipe" Type="Self.recipe" Multiplicity="1" />
+  <Association Name="FK__requires__recipe__51300E55">
+    <End Role="recipe" Type="Self.recipe" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="requires" Type="Self.requires" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="recipe">
@@ -211,6 +188,48 @@
       </Principal>
       <Dependent Role="requires">
         <PropertyRef Name="recipe_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__requires__units__5224328E">
+    <End Role="unit" Type="Self.unit" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="requires" Type="Self.requires" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="unit">
+        <PropertyRef Name="name" />
+      </Principal>
+      <Dependent Role="requires">
+        <PropertyRef Name="units" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__unit__system__2EDAF651">
+    <End Role="unit_system" Type="Self.unit_system" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="unit" Type="Self.unit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="unit_system">
+        <PropertyRef Name="name" />
+      </Principal>
+      <Dependent Role="unit">
+        <PropertyRef Name="system" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__unit__type__2FCF1A8A">
+    <End Role="unit_type" Type="Self.unit_type" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="unit" Type="Self.unit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="unit_type">
+        <PropertyRef Name="name" />
+      </Principal>
+      <Dependent Role="unit">
+        <PropertyRef Name="type" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -226,45 +245,45 @@
     <EntitySet Name="unit" EntityType="Self.unit" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="unit_system" EntityType="Self.unit_system" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="unit_type" EntityType="Self.unit_type" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="author_chef" Association="Self.author_chef">
+    <AssociationSet Name="FK__author__chef_id__46B27FE2" Association="Self.FK__author__chef_id__46B27FE2">
       <End Role="chef" EntitySet="chef" />
       <End Role="author" EntitySet="author" />
     </AssociationSet>
-    <AssociationSet Name="author_recipe" Association="Self.author_recipe">
+    <AssociationSet Name="FK__author__recipe_i__47A6A41B" Association="Self.FK__author__recipe_i__47A6A41B">
       <End Role="recipe" EntitySet="recipe" />
       <End Role="author" EntitySet="author" />
     </AssociationSet>
-    <AssociationSet Name="measurement_system" Association="Self.measurement_system">
-      <End Role="unit_system" EntitySet="unit_system" />
-      <End Role="unit" EntitySet="unit" />
-    </AssociationSet>
-    <AssociationSet Name="measurement_type" Association="Self.measurement_type">
-      <End Role="unit_type" EntitySet="unit_type" />
-      <End Role="unit" EntitySet="unit" />
-    </AssociationSet>
-    <AssociationSet Name="recipe_category_category" Association="Self.recipe_category_category">
-      <End Role="category" EntitySet="category" />
-      <End Role="recipe_category" EntitySet="recipe_category" />
-    </AssociationSet>
-    <AssociationSet Name="recipe_category_recipe" Association="Self.recipe_category_recipe">
-      <End Role="recipe" EntitySet="recipe" />
-      <End Role="recipe_category" EntitySet="recipe_category" />
-    </AssociationSet>
-    <AssociationSet Name="recipe_level" Association="Self.recipe_level">
+    <AssociationSet Name="FK__recipe__skill_le__3864608B" Association="Self.FK__recipe__skill_le__3864608B">
       <End Role="skill_level" EntitySet="skill_level" />
       <End Role="recipe" EntitySet="recipe" />
     </AssociationSet>
-    <AssociationSet Name="requires_measurement" Association="Self.requires_measurement">
-      <End Role="unit" EntitySet="unit" />
-      <End Role="requires" EntitySet="requires" />
+    <AssociationSet Name="FK__recipe_ca__categ__3C34F16F" Association="Self.FK__recipe_ca__categ__3C34F16F">
+      <End Role="category" EntitySet="category" />
+      <End Role="recipe_category" EntitySet="recipe_category" />
     </AssociationSet>
-    <AssociationSet Name="Table_3_ingredient" Association="Self.Table_3_ingredient">
+    <AssociationSet Name="FK__recipe_ca__recip__3D2915A8" Association="Self.FK__recipe_ca__recip__3D2915A8">
+      <End Role="recipe" EntitySet="recipe" />
+      <End Role="recipe_category" EntitySet="recipe_category" />
+    </AssociationSet>
+    <AssociationSet Name="FK__requires__ingred__503BEA1C" Association="Self.FK__requires__ingred__503BEA1C">
       <End Role="ingredient" EntitySet="ingredient" />
       <End Role="requires" EntitySet="requires" />
     </AssociationSet>
-    <AssociationSet Name="Table_3_recipe" Association="Self.Table_3_recipe">
+    <AssociationSet Name="FK__requires__recipe__51300E55" Association="Self.FK__requires__recipe__51300E55">
       <End Role="recipe" EntitySet="recipe" />
       <End Role="requires" EntitySet="requires" />
+    </AssociationSet>
+    <AssociationSet Name="FK__requires__units__5224328E" Association="Self.FK__requires__units__5224328E">
+      <End Role="unit" EntitySet="unit" />
+      <End Role="requires" EntitySet="requires" />
+    </AssociationSet>
+    <AssociationSet Name="FK__unit__system__2EDAF651" Association="Self.FK__unit__system__2EDAF651">
+      <End Role="unit_system" EntitySet="unit_system" />
+      <End Role="unit" EntitySet="unit" />
+    </AssociationSet>
+    <AssociationSet Name="FK__unit__type__2FCF1A8A" Association="Self.FK__unit__type__2FCF1A8A">
+      <End Role="unit_type" EntitySet="unit_type" />
+      <End Role="unit" EntitySet="unit" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Create";
+    ViewBag.extrascript = "requires.js";
 }
 
 <h2>Create</h2>
@@ -74,8 +75,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.categories, "categories", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.ListBox("categories", null, htmlAttributes: new { @class = "form-control", @multiple="multiple"})
-            @Html.ValidationMessageFor(model => model.skill_level, "", new { @class = "text-danger" })
+            @Html.ListBox("categories", null, htmlAttributes: new { @class = "form-control", @multiple = "multiple" })
         </div>
     </div>
 
@@ -87,9 +87,36 @@
         </div>
     </div>
 
+
+    <div id="requires_wrapper" class="form-group">
+        <div class="col-md-10 requires">
+            <label>Ingredients</label>
+            <div class="form-group">
+                <div class="col-md-10 row">
+                    <input class="col-md-3" name="amount" type="text" />
+                    @Html.DropDownList("units", null, htmlAttributes: new { @class = "form-control col-md-4" })
+                    @Html.DropDownList("ingredients", null, htmlAttributes: new { @class = "form-control col-md-5" })
+                </div>
+            </div>
+        </div>
+        <div id="requires_template" class="col-md-10">
+            <label>Ingredients</label>
+            <div class="form-group">
+                <div class="col-md-10 row">
+                    <input class="col-md-3" name="amount" type="text" />
+                    @Html.DropDownList("units", null, htmlAttributes: new { @class = "form-control col-md-4" })
+                    @Html.DropDownList("ingredients", null, htmlAttributes: new { @class = "form-control col-md-5" })
+                </div>
+            </div>
+        </div>
+    </div>
+    @Html.EditorFor(model => model._requires, new { htmlAttributes = new { @id = "_requires", @class = "form-control", @type = "hidden" } })
+    <button onclick="addIngredient()" type="button" value="none" class="btn btn-default">Add Ingredient</button>
+
+
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Create" class="btn btn-default" />
+            <input type="submit" onclick="collectData()" value="Create" class="btn btn-default" />
         </div>
     </div>
 </div>
@@ -98,6 +125,8 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
+
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

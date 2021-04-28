@@ -1,0 +1,13 @@
+﻿/* sass form thead whole application */
+
+.display-none,
+.invisible,
+#requires_template
+{
+    display: none;
+}
+
+.invisible {
+    width: 0;
+    height: 0;
+}

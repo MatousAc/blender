@@ -33,6 +33,44 @@ namespace blender.Models
                 recats.Add(recat);
             }
             this.recipe_category = recats;
+
+            // requires
+            List<require> reqs = new List<require>();
+            string[] _requires_split = _recipe._requires.Split('@');
+            foreach (string _req in _requires_split)
+            {
+                if (_req != "")
+                {
+                    string[] _req_list = _req.Split('%');
+                    string _amount = _req_list[0];
+                    int _top;
+                    int _bottom;
+                    string _unit = _req_list[1];
+                    string _ingredient = _req_list[2];
+                    string[] _split = _amount.Split('/');
+                    if (_split.Length == 2)
+                    {
+                        _top = Int32.Parse(_split[0]);
+                        _bottom = Int32.Parse(_split[1]);
+                    }
+                    else
+                    {
+                        _top = Int32.Parse(_amount);
+                        _bottom = 1;
+                    }
+
+                    require req = new require()
+                    {
+                        recipe_id = _recipe.recipe_id,
+                        top = _top,
+                        bottom = _bottom,
+                        units = _unit,
+                        ingredient = _ingredient
+                    };
+                    reqs.Add(req);
+                }
+            }
+            this.requires = reqs;
         }
     }
 }

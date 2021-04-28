@@ -41,6 +41,8 @@ namespace blender.Models
         {
             ViewBag.skill_level = new SelectList(db.skill_level, "name", "name"); // gives me a list of skill levels
             ViewBag.categories = new SelectList(db.categories, "name", "name"); // gives me a select list of all categories
+            ViewBag.ingredients = new SelectList(db.ingredients, "name", "name");
+            ViewBag.units = new SelectList(db.units, "name", "name");
             _recipe _recipe = new _recipe(); // a _recipe model to carry all our recipe data
             return View(_recipe); // get the page based on this object model
         }
@@ -52,7 +54,7 @@ namespace blender.Models
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = 
             "recipe_id,name,instructions,serves,prep_mins,cook_mins,calories," +
-            "skill_level,categories,visual")] _recipe _recipe) // we get all the above specified data
+            "skill_level,categories,visual,_requires")] _recipe _recipe) // we get all the above specified data
         {
             if (ModelState.IsValid)
             {   // transform the _recipe transfer class into a real recipe w/ it's associations
@@ -61,7 +63,6 @@ namespace blender.Models
                 db.SaveChanges(); // save it all
                 return RedirectToAction("Index"); // let's go somewhere else
             }
-
             ViewBag.skill_level = new SelectList(db.skill_level, "name", "name", _recipe.skill_level);
             return View(_recipe);
         }
@@ -78,8 +79,13 @@ namespace blender.Models
             {
                 return HttpNotFound();
             }
+            
             ViewBag.skill_level = new SelectList(db.skill_level, "name", "name", recipe.skill_level);
-            return View(recipe);
+            ViewBag.categories = new SelectList(db.categories, "name", "name"); // gives me a select list of all categories
+            ViewBag.ingredients = new SelectList(db.ingredients, "name", "name");
+            ViewBag.units = new SelectList(db.units, "name", "name");
+            _recipe _recipe = new _recipe(recipe);
+            return View(_recipe);
         }
 
         // POST: recipes/Edit/5

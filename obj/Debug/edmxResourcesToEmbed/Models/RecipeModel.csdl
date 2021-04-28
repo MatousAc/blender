@@ -76,11 +76,12 @@
     <Property Name="requirement_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="recipe_id" Type="Int32" Nullable="false" />
     <Property Name="ingredient" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="amount" Type="Int32" Nullable="false" />
     <Property Name="units" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="ingredient1" Relationship="Self.Table_3_ingredient" FromRole="requires" ToRole="ingredient" />
     <NavigationProperty Name="recipe" Relationship="Self.Table_3_recipe" FromRole="requires" ToRole="recipe" />
     <NavigationProperty Name="unit" Relationship="Self.requires_measurement" FromRole="requires" ToRole="unit" />
+    <Property Name="top" Type="Int32" Nullable="false" />
+    <Property Name="bottom" Type="Int32" Nullable="false" />
   </EntityType>
   <EntityType Name="skill_level">
     <Key>

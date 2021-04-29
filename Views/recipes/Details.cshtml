@@ -1,4 +1,4 @@
-﻿@model blender.Models.recipe
+﻿@model blender.Models._recipe
 
 @{
     ViewBag.Title = "Details";
@@ -67,12 +67,33 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.skill_level1.name)
+            @Html.DisplayNameFor(model => model.skill_level)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.skill_level1.name)
+            @Html.DisplayFor(model => model.skill_level)
         </dd>
+
+        <td>
+            @foreach (var category in Model.categories)
+            {
+                @Html.ActionLink(@category, "../categories/Details", new { id = category })
+            }
+        </td>
+
+        <td>
+            @foreach (string requirement in ViewData["_requires"].ToString().Split('@'))
+            {
+            <span>
+                @foreach(string aui in requirement.Split('%'))
+                {
+                    <span>
+                        @aui
+                    </span>
+                }
+            </span>
+            }
+        </td>
 
     </dl>
 </div>

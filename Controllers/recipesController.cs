@@ -18,7 +18,12 @@ namespace blender.Models
         public ActionResult Index()
         {
             var recipes = db.recipes.Include(r => r.skill_level1);
-            return View(recipes.ToList());
+            List<_recipe> _recipes = new List<_recipe>();
+            foreach (recipe recipe in recipes)
+            {
+                _recipes.Add(new _recipe(recipe));
+            }
+            return View(_recipes.ToList());
         }
 
         // GET: recipes/Details/5
@@ -33,7 +38,12 @@ namespace blender.Models
             {
                 return HttpNotFound();
             }
-            return View(recipe);
+
+            _recipe _recipe = new _recipe(recipe);
+
+            ViewData["_requires"] = _recipe._requires;
+
+            return View(_recipe);
         }
 
         // GET: recipes/Create
@@ -138,7 +148,12 @@ namespace blender.Models
             {
                 return HttpNotFound();
             }
-            return View(recipe);
+
+            _recipe _recipe = new _recipe(recipe);
+
+            ViewData["_requires"] = _recipe._requires;
+
+            return View(_recipe);
         }
 
         // POST: recipes/Delete/5

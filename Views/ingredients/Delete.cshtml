@@ -7,43 +7,65 @@
 <h2>Delete</h2>
 
 <h3>Are you sure you want to delete this?</h3>
+<p>If you confirm, all recipes that require @Model.name will no longer require it.</p>
 <div>
     <h4>ingredient</h4>
     <hr />
     <dl class="dl-horizontal">
+
         <dt>
-            @Html.DisplayNameFor(model => model.source)
+            @Html.DisplayNameFor(model => model.name)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.source)
+            @Html.DisplayFor(model => model.name)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.price)
-        </dt>
+        @if (Model.source != null)
+        {
+            <dt>
+                @Html.DisplayNameFor(model => model.source)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.price)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.source)
+            </dd>
+        }
 
-        <dt>
-            @Html.DisplayNameFor(model => model.color)
-        </dt>
+        @if (Model.price != null)
+        {
+            <dt>
+                @Html.DisplayNameFor(model => model.price)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.color)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.price)
+            </dd>
+        }
 
-        <dt>
-            @Html.DisplayNameFor(model => model.description)
-        </dt>
+        @if (Model.color != null)
+        {
+            <dt>
+                @Html.DisplayNameFor(model => model.color)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.description)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.color)
+            </dd>
+        }
 
+        @if (Model.description != null)
+        {
+            <dt>
+                @Html.DisplayNameFor(model => model.description)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.description)
+            </dd>
+        }
     </dl>
+  
 
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()

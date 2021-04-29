@@ -1,4 +1,4 @@
-﻿@model IEnumerable<blender.Models.recipe>
+﻿@model IEnumerable<blender.Models._recipe>
 
 @{
     ViewBag.Title = "Index";
@@ -15,27 +15,14 @@
             @Html.DisplayNameFor(model => model.name)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.instructions)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.serves)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.prep_mins)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.cook_mins)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.calories)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.visual)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.skill_level1.name)
+            @Html.DisplayNameFor(model => model.skill_level)
         </th>
-        <th></th>
+        <th>
+            @Html.DisplayNameFor(model => model.categories)
+        </th>
     </tr>
 
 @foreach (var item in Model) {
@@ -44,29 +31,20 @@
             @Html.DisplayFor(modelItem => item.name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.instructions)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.serves)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.prep_mins)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.cook_mins)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.calories)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.visual)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.skill_level1.name)
+            @Html.DisplayFor(modelItem => item.skill_level)
+        </td>
+        <td>
+            @foreach (var category in item.categories)
+                {
+                    @Html.ActionLink(@category, "../categories/Details", new { id = category })
+                }
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.recipe_id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.recipe_id }) |
+            @Html.ActionLink("Recipe", "Details", new { id=item.recipe_id }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.recipe_id })
         </td>
     </tr>

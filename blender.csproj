@@ -274,7 +274,6 @@
     <Content Include="Views\categories\Create.cshtml" />
     <Content Include="Views\categories\Delete.cshtml" />
     <Content Include="Views\categories\Details.cshtml" />
-    <Content Include="Views\categories\Edit.cshtml" />
     <Content Include="Views\categories\Index.cshtml" />
     <Content Include="Views\recipes\Create.cshtml" />
     <Content Include="Views\recipes\Delete.cshtml" />

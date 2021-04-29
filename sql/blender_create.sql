@@ -75,7 +75,7 @@ CREATE TABLE recipe (
     cook_mins int  NOT NULL,
     calories int  NOT NULL,
     skill_level varchar(20)  NOT NULL,
-    visual image  NULL,
+    image_url varchar(1000)  NULL,
     CONSTRAINT recipe_pk PRIMARY KEY  (recipe_id),
 	FOREIGN KEY (skill_level)
     REFERENCES skill_level (name)

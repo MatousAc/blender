@@ -30,7 +30,7 @@ namespace blender.Models
         public int cook_mins { get; set; }
         public int calories { get; set; }
         public string skill_level { get; set; }
-        public byte[] visual { get; set; }
+        public string image_url { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<author> authors { get; set; }

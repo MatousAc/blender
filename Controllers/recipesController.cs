@@ -64,7 +64,7 @@ namespace blender.Models
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = 
             "recipe_id,name,instructions,serves,prep_mins,cook_mins,calories," +
-            "skill_level,categories,visual,_requires")] _recipe _recipe) // we get all the above specified data
+            "skill_level,categories,image_url,_requires")] _recipe _recipe) // we get all the above specified data
         {
             if (ModelState.IsValid)
             {   // transform the _recipe transfer class into a real recipe w/ it's associations
@@ -109,7 +109,7 @@ namespace blender.Models
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include =
             "recipe_id,name,instructions,serves,prep_mins,cook_mins,calories," +
-            "skill_level,categories,visual,_requires")] _recipe _recipe)
+            "skill_level,categories,image_url,_requires")] _recipe _recipe)
         {
             if (ModelState.IsValid)
             {   // so this is how we do it:

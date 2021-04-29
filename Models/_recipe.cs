@@ -30,7 +30,7 @@ namespace blender.Models
                 this.cook_mins = recipe.cook_mins;
                 this.calories = recipe.calories;
                 this.skill_level = recipe.skill_level;
-                this.visual = recipe.visual;
+                this.image_url = recipe.image_url;
 
                 // associations
                 // recipe_categories
@@ -69,7 +69,7 @@ namespace blender.Models
         public int cook_mins { get; set; }
         public int calories { get; set; }
         public string skill_level { get; set; }
-        public byte[] visual { get; set; }
+        public string image_url { get; set; }
         public List<int> authors { get; set; }
         public List<string> categories { get; set; }
         public List<string> units { get; set; }

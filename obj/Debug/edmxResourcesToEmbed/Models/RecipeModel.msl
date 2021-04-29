@@ -44,6 +44,7 @@
     <EntitySetMapping Name="recipes">
       <EntityTypeMapping TypeName="blenderModel.recipe">
         <MappingFragment StoreEntitySet="recipe">
+          <ScalarProperty Name="image_url" ColumnName="image_url" />
           <ScalarProperty Name="recipe_id" ColumnName="recipe_id" />
           <ScalarProperty Name="name" ColumnName="name" />
           <ScalarProperty Name="instructions" ColumnName="instructions" />
@@ -52,7 +53,6 @@
           <ScalarProperty Name="cook_mins" ColumnName="cook_mins" />
           <ScalarProperty Name="calories" ColumnName="calories" />
           <ScalarProperty Name="skill_level" ColumnName="skill_level" />
-          <ScalarProperty Name="visual" ColumnName="visual" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

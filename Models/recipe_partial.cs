@@ -18,7 +18,7 @@ namespace blender.Models
             this.cook_mins = _recipe.cook_mins;
             this.calories = _recipe.calories;
             this.skill_level = _recipe.skill_level;
-            this.visual = _recipe.visual;
+            this.image_url = _recipe.image_url;
 
             // associations
             // recipe_categories
@@ -84,7 +84,7 @@ namespace blender.Models
             this.cook_mins = _recipe.cook_mins;
             this.calories = _recipe.calories;
             this.skill_level = _recipe.skill_level;
-            this.visual = _recipe.visual;
+            this.image_url = _recipe.image_url;
 
             // associations
             // recipe_categories

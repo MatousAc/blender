@@ -48,7 +48,7 @@
     <Property Name="cook_mins" Type="int" Nullable="false" />
     <Property Name="calories" Type="int" Nullable="false" />
     <Property Name="skill_level" Type="varchar" MaxLength="20" Nullable="false" />
-    <Property Name="visual" Type="image" />
+    <Property Name="image_url" Type="varchar" MaxLength="1000" />
   </EntityType>
   <EntityType Name="recipe_category">
     <Key>

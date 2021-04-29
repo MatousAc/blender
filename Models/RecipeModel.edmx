@@ -53,7 +53,7 @@
           <Property Name="cook_mins" Type="int" Nullable="false" />
           <Property Name="calories" Type="int" Nullable="false" />
           <Property Name="skill_level" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="visual" Type="image" />
+          <Property Name="image_url" Type="varchar" MaxLength="1000" />
         </EntityType>
         <EntityType Name="recipe_category">
           <Key>
@@ -348,11 +348,11 @@
           <Property Name="cook_mins" Type="Int32" Nullable="false" />
           <Property Name="calories" Type="Int32" Nullable="false" />
           <Property Name="skill_level" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="visual" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="authors" Relationship="Self.author_recipe" FromRole="recipe" ToRole="author" />
           <NavigationProperty Name="recipe_category" Relationship="Self.recipe_category_recipe" FromRole="recipe" ToRole="recipe_category" />
           <NavigationProperty Name="skill_level1" Relationship="Self.recipe_level" FromRole="recipe" ToRole="skill_level" />
           <NavigationProperty Name="requires" Relationship="Self.Table_3_recipe" FromRole="recipe" ToRole="requires" />
+          <Property Name="image_url" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="recipe_category">
           <Key>
@@ -632,6 +632,7 @@
           <EntitySetMapping Name="recipes">
             <EntityTypeMapping TypeName="blenderModel.recipe">
               <MappingFragment StoreEntitySet="recipe">
+                <ScalarProperty Name="image_url" ColumnName="image_url" />
                 <ScalarProperty Name="recipe_id" ColumnName="recipe_id" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="instructions" ColumnName="instructions" />
@@ -640,7 +641,6 @@
                 <ScalarProperty Name="cook_mins" ColumnName="cook_mins" />
                 <ScalarProperty Name="calories" ColumnName="calories" />
                 <ScalarProperty Name="skill_level" ColumnName="skill_level" />
-                <ScalarProperty Name="visual" ColumnName="visual" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

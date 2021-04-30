@@ -170,6 +170,7 @@
       <DependentUpon>RecipeModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\recipe_partial.cs" />
+    <Compile Include="Models\_category.cs" />
     <Compile Include="Models\_recipe.cs" />
     <Compile Include="Models\require.cs">
       <DependentUpon>RecipeModel.tt</DependentUpon>
@@ -187,6 +188,7 @@
     <Compile Include="Models\unit_type.cs">
       <DependentUpon>RecipeModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\_recipe_teaser.cs" />
     <Compile Include="Models\_require.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -280,6 +282,7 @@
     <Content Include="Views\recipes\Details.cshtml" />
     <Content Include="Views\recipes\Edit.cshtml" />
     <Content Include="Views\recipes\Index.cshtml" />
+    <Content Include="Views\Shared\_recipe_teaser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

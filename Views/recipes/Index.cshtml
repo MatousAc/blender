@@ -25,29 +25,15 @@
         </th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.image_url)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.skill_level)
-        </td>
-        <td>
-            @foreach (var category in item.categories)
-                {
-                    @Html.ActionLink(@category, "../categories/Details", new { id = category })
-                }
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.recipe_id }) |
-            @Html.ActionLink("Recipe", "Details", new { id=item.recipe_id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.recipe_id })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+        {
+            {Html.RenderPartial("_recipe_teaser", new ViewDataDictionary {
+              { "recipe_id", item.recipe_id },
+              { "name", item.name },
+              { "image_url", item.image_url },
+              { "skill_level", item.skill_level },
+              { "categories", string.Join("%", item.categories.ToArray()) } });
+            }
+        }
 
 </table>

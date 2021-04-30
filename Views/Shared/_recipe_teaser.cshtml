@@ -1,0 +1,34 @@
+﻿@model IEnumerable<blender.Models._recipe>
+    @{
+        string recipe_id = this.ViewData.ContainsKey("recipe_id") ? this.ViewData["recipe_id"].ToString() : string.Empty;
+        string name = this.ViewData.ContainsKey("name") ? this.ViewData["name"].ToString() : string.Empty;
+        string image_url = this.ViewData.ContainsKey("image_url") ? this.ViewData["image_url"].ToString() : string.Empty;
+        string skill_level = this.ViewData.ContainsKey("skill_level") ? this.ViewData["skill_level"].ToString() : string.Empty;
+        string categories = this.ViewData.ContainsKey("categories") ? this.ViewData["categories"].ToString() : null;
+    }
+
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => image_url)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => skill_level)
+        </td>
+        <td>
+            @if (categories != null)
+            {
+                foreach (var category in categories.Split('%'))
+                {
+                    @Html.ActionLink(@category, "../categories/Details", new { id = category })
+                }
+            }
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "../recipes/Edit", new { id = recipe_id }) |
+            @Html.ActionLink("Recipe", "../recipes/Details", new { id = recipe_id }) |
+            @Html.ActionLink("Delete", "../recipes/Delete", new { id = recipe_id })
+        </td>
+    </tr>

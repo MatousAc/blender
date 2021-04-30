@@ -1,4 +1,4 @@
-﻿@model blender.Models.category
+﻿@model blender.Models._category
 
 @{
     ViewBag.Title = "Details";
@@ -18,6 +18,20 @@
             @Html.DisplayFor(model => model.name)
         </dd>
     </dl>
+
+
+    @foreach (var item in Model.recipes)
+    {
+        {
+            Html.RenderPartial("_recipe_teaser", new ViewDataDictionary {
+              { "recipe_id", item.recipe_id },
+              { "name", item.name },
+              { "image_url", item.image_url },
+              { "skill_level", item.skill_level } 
+            });
+        }
+    }
+
 </div>
 <p>
     @Html.ActionLink("Back to List", "Index")

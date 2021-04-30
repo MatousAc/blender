@@ -33,14 +33,16 @@ namespace blender.Models
             }
 
             // I will want to be able to show all recipes in a certain category.
-            //ICollection < recipe_category > recats = db.recipe_category;
-            //List<recipe> recipes = new List<recipe>();
-            //foreach(recipe_category recat in recats)
-            //{
-            //    recipes.Add(recat.recipe);
-            //}
+            ICollection < recipe_category > recats = category.recipe_category;
+            List<recipe> recipes = new List<recipe>();
+            foreach(recipe_category recat in recats)
+            {
+                recipes.Add(recat.recipe);
+            }
 
-            return View(category);
+            _category _category = new _category(category, recipes);
+
+            return View(_category);
         }
 
         // GET: categories/Create

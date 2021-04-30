@@ -128,6 +128,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Variables\app_variables.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\unitTypeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -209,7 +210,6 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
     <Content Include="Models\RecipeModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>RecipeModel.Context.cs</LastGenOutput>

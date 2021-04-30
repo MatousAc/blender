@@ -207,6 +207,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>site.scss</DependentUpon>
     </Content>
+    <Content Include="Content\sass\app.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

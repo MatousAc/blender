@@ -3,12 +3,13 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - blender</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <script src="~/Scripts/app.js"></script>
     <script src="~/Scripts/@ViewBag.extrascript"></script>
     <link rel="stylesheet" href="~/Content/sass/site.css" />
+    <link rel="stylesheet" href="~/Content/sass/app.css" />
     <link rel="stylesheet" href="~/Content/sass/@ViewBag.extrastylesheet" />
 </head>
 <body>
@@ -28,10 +29,10 @@
                     <li>@Html.ActionLink("Categories", "Index", "categories")</li>
                     <li>@Html.ActionLink("Ingredients", "Index", "ingredients")</li>
                 </ul>
-                    <label class="switch">
-                        <input type="checkbox">
-                        <span class="slider round"></span>
-                    </label>
+                <label class="switch">
+                    <input type="checkbox" onclick="toggleSystem()">
+                    <span class="slider round"></span>
+                </label>
             </div>
         </div>
     </div>

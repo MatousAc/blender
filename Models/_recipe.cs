@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using blender.features;
-using System.Data.Entity.Design.PluralizationServices.PluralizationService;
+using Humanizer;
 
 namespace blender.Models
 {
@@ -68,6 +68,7 @@ namespace blender.Models
             List<string> reqs = new List<string>();
             foreach (require req in recipe.requires)
             {
+                string units = req.unit.name;
                 string amount;
                 if (req.bottom != 1)
                 {
@@ -83,8 +84,13 @@ namespace blender.Models
 
                 // making whole numbers happen:
                 amount = wholify(amount);
+                // pluralizing units
+                //if (req.top != 1 && req.bottom != 1)
+                //{
+                //    units = units.Pluralize();
+                //}
 
-                reqs.Add($"{amount}%{req.units}%{req.ingredient}");
+                reqs.Add($"{amount}%{units}%{req.ingredient}");
             }
             this._requires = String.Join("@", reqs);
         }
@@ -103,47 +109,6 @@ namespace blender.Models
                 }
             }
             return amount;
-        }
-
-        // Thanks for Mike for the following function:
-        // defines function 		serves	4	int
-        // that calculates the gcd with parameters a and b
-        public static int gcd(int a, int b)
-        {
-            //find the gcd using the Euclid’s algorithm
-            while (a != b)
-            {
-                if (a < b) b = b - a;
-                else a = a - b;
-            }
-            //since at this point a=b, the gcd can be either of them
-            //it is necessary to pass the gcd to the main function
-            return (a);
-        }
-
-        public void _requiresFromTopBottom ()
-        {
-            string[] _requires_list = _requires.Split('@');
-            string[] new_requires = new string[this.top.Count];
-            foreach (int index in Enumerable.Range(0, top.Count))
-            {
-                string[] rs = _requires_list[index].Split('%');
-                string amount;
-
-                if (bottom[index] == 1)
-                {   // forget the denominator if it's one
-                    amount = top[index].ToString();
-                }
-                else
-                {
-                    amount = $"{top[index]}/{bottom[index]}";
-                }
-
-                amount = wholify(amount);
-
-                new_requires[index] = ($"{amount}%{rs[1]}%{rs[2]}");
-            }
-            _requires = String.Join("@", new_requires);
         }
 
         public void scale(int serves)
@@ -167,7 +132,8 @@ namespace blender.Models
                     else if (denominator % 3 == 0) { cf = 3; } // when we want to get to the closest third
                     // below I scale up the numerator and make the top an integer, thus bringing it to the 
                     // closest eigth or third. 
-                    int num = (int)(scale_factor * numerator * cf);
+                    // we use the round function to do better than just truncating the decimal
+                    int num = (int)Math.Round((scale_factor * numerator * cf));
                     numerator = num / cf;
 
                     //then I divide it back down and simplify the fraction
@@ -181,6 +147,64 @@ namespace blender.Models
             }
             this._requiresFromTopBottom();
             this.serves = serves;
+        }
+
+        // helpers!
+
+        // Thanks for Mike for the following function:
+        // defines function 		serves	4	int
+        // that calculates the gcd with parameters a and b
+        public static int gcd(int a, int b)
+        {
+            //find the gcd using the Euclid’s algorithm
+            while (a != b)
+            {
+                if (a < b) b = b - a;
+                else a = a - b;
+            }
+            //since at this point a=b, the gcd can be either of them
+            //it is necessary to pass the gcd to the main function
+            return (a);
+        }
+
+        public void _requiresFromTopBottom()
+        {
+            string[] _requires_list = _requires.Split('@');
+            string[] new_requires = new string[this.top.Count];
+            foreach (int index in Enumerable.Range(0, top.Count))
+            {
+                string[] rs = _requires_list[index].Split('%');
+                string amount;
+                string units = rs[1];
+                string ingredient = rs[2];
+                if (bottom[index] == 1)
+                {   // forget the denominator if it's one
+                    amount = top[index].ToString();
+                }
+                else
+                {
+                    amount = $"{top[index]}/{bottom[index]}";
+                }
+
+                amount = wholify(amount);
+                // we don't wanna display "count" on the details
+                if (units == "count")
+                {
+                    units = "";
+                    if (top[index] > bottom[index])
+                    {
+                        ingredient = ingredient.Pluralize();
+                    }
+                }
+                // pluralizing units
+                if (top[index] > bottom[index])
+                {
+                    units = units.Pluralize();
+                }
+
+                new_requires[index] = ($"{amount}%{units}%{ingredient}");
+            }
+            _requires = String.Join("@", new_requires);
         }
 
     }

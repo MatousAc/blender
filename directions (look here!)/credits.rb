@@ -3,7 +3,7 @@
 # 
 # Thanks to Mike K @ https://kociumbas.wordpress.com/author/kociumbas/ for his gcd funcion:
 # 
-# 
+# A huge thanks to clairernovotny @ https://github.com/Humanizr/Humanizer for providing Humanizer, with which I pluralize some words
 # 
 # 
 # 

@@ -9,7 +9,6 @@
     <script src="~/Scripts/app.js"></script>
     <script src="~/Scripts/@ViewBag.extrascript"></script>
     <link rel="stylesheet" href="~/Content/sass/site.css" />
-    <link rel="stylesheet" href="~/Content/sass/site.css" />
     <link rel="stylesheet" href="~/Content/sass/@ViewBag.extrastylesheet" />
 </head>
 <body onload="getSystem()">
@@ -30,13 +29,15 @@
                     <li>@Html.ActionLink("Ingredients", "Index", "ingredients")</li>
                 </ul>
                 <span class="nav navbar-nav nav-text-white">imperial</span>
-                <form method="post" action="Home">
+                <form id="system_form" method="post" action="../AppVariables/toggleSystem?syst=imperial&callingPage=/">
+                    @Html.AntiForgeryToken()
                     <label class="switch">
-                        <input id="system" type="checkbox"/> <!--onclick="toggleSystem()"-->
+                        <input id="system" type="checkbox" onclick="toggleSystemPost(); toggleSystemSession();" />
                         <span class="slider round"></span>
                     </label>
-                    <input type="submit" value="toggleSystem()"/>
+                    <input type="submit" value="system toggle" class="btn btn-default" />
                 </form>
+
                 <span class="nav navbar-nav nav-text-white">metric</span>
             </div>
         </div>

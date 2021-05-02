@@ -51,6 +51,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Humanizer, Version=2.9.0.0, Culture=neutral, PublicKeyToken=979442b78dfc278e, processorArchitecture=MSIL">
+      <HintPath>packages\Humanizer.Core.2.9.9\lib\netstandard2.0\Humanizer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -128,7 +131,8 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="App_Variables\app_variables.cs" />
+    <Compile Include="App_Variables\AppVariables.cs" />
+    <Compile Include="Controllers\AppVariablesController.cs" />
     <Compile Include="Controllers\app_variables_set.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\unitTypeController.cs" />
@@ -289,6 +293,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\AppVariables\" />
     <Folder Include="Views\RecipeCategoryViewModel\" />
     <Folder Include="Views\ViewModel\" />
   </ItemGroup>

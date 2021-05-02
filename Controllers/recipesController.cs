@@ -76,7 +76,7 @@ namespace blender.Models
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = 
             "recipe_id,name,instructions,serves,prep_mins,cook_mins,calories," +
-            "skill_level,categories,visual,_requires")] _recipe _recipe) // we get all the above specified data
+            "skill_level,categories,image_url,_requires")] _recipe _recipe) // we get all the above specified data
         {
             if (ModelState.IsValid)
             {   // transform the _recipe transfer class into a real recipe w/ it's associations
@@ -146,6 +146,43 @@ namespace blender.Models
             ViewBag.ingredients = new SelectList(db.ingredients, "name", "name");
             ViewBag.units = new SelectList(db.units, "name", "name");
             return View(_recipe);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Duplicate(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            recipe recipe = db.recipes.Find(id);
+            if (recipe == null)
+            {
+                return HttpNotFound();
+            }
+            
+            ICollection<recipe_category> _recats = recipe.recipe_category;
+            ICollection<require> _requires = recipe.requires;
+            List<recipe_category> recats = new List<recipe_category>();
+            List<require> requires = new List<require>();
+            
+            // lets add all the categories and requires to lists
+            foreach (recipe_category recat in _recats)
+                { recats.Add(recat); db.recipe_category.Add(recat); }
+            foreach (require req in _requires)
+                { requires.Add(req); db.requires.Add(req); }
+
+            db.Entry(recipe).State = EntityState.Detached;
+
+            // and let's give them to the duplicate recipe
+            recipe.recipe_id = 0;
+            recipe.recipe_category = recats;
+            recipe.requires = requires;
+
+            db.recipes.Add(recipe);
+            db.SaveChanges(); // put it in the DB
+            return RedirectToAction("Edit/" + recipe.recipe_id); // immediately go to edit it
         }
 
         // GET: recipes/Delete/5

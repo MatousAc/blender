@@ -70,7 +70,7 @@
         <td>
             @foreach (var category in Model.categories)
             {
-                @Html.ActionLink(@category, "../categories/Details", new { id = category })
+                @Html.ActionLink(@category, "../categories/Details", new { @id = category })
             }
         </td>
 
@@ -79,7 +79,7 @@
         </dt>
 
         <dd>
-            @Html.EditorFor(model => model.serves)
+            @Html.EditorFor(model => model.serves, new { htmlAttributes = new { @min = Model.serves} })
         </dd>
         <button onclick="loadNewServings()">Adjust</button>
 
@@ -103,3 +103,11 @@
     @Html.ActionLink("Edit", "Edit", new { id = Model.recipe_id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
+
+<form method="post" action="~/recipes/Duplicate/@Model.recipe_id">
+    @Html.AntiForgeryToken()
+    <input type="submit" value="Duplicate Recipe" class="btn btn-default" />
+</form>
+
+
+

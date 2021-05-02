@@ -7,6 +7,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using System.Dynamic;
+using blender.Models;
+using blender.features;
 
 namespace blender.Models
 {
@@ -28,8 +30,9 @@ namespace blender.Models
         }
 
         // GET: recipes/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(int? id, int? serves)
         {
+            //int servings = Int32.Parse(servs); // for scaling the recipe
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -41,6 +44,14 @@ namespace blender.Models
             }
 
             _recipe _recipe = new _recipe(recipe);
+
+
+            if (serves == null)
+            {
+                serves = _recipe.serves;
+            }
+            int servz = (int)serves;
+            _recipe.scale(servz);
 
             ViewData["_requires"] = _recipe._requires;
 
@@ -110,7 +121,7 @@ namespace blender.Models
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include =
             "recipe_id,name,instructions,serves,prep_mins,cook_mins,calories," +
-            "skill_level,categories,visual,_requires")] _recipe _recipe)
+            "skill_level,categories,image_url,_requires")] _recipe _recipe)
         {
             if (ModelState.IsValid)
             {   // so this is how we do it:

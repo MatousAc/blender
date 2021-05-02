@@ -5,18 +5,25 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Handlers;
 using System.Threading.Tasks;
+//using blender.App_Variables;
 
 namespace blender.Controllers
 {
     public class HomeController : Controller
     {
-        public string systemToggle()
+        public void toggleSystem()
         {
-            return "metric";
+            Console.WriteLine("toggleSystem()");
         }
         public ActionResult Index()
         {
 
+            return View();
+        }
+
+        public ActionResult OnPost()
+        {
+            toggleSystem();
             return View();
         }
 

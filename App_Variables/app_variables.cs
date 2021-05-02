@@ -5,8 +5,8 @@ using System.Web;
 
 namespace blender.App_Variables
 {
-    public static class AppVariables
+    public class AppVariables
     {
-        public static string system { get; set; }
+        public string system { get; set; }
     }  
 }

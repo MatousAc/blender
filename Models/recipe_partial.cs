@@ -43,6 +43,7 @@ namespace blender.Models
                 {
                     string[] _req_list = _req.Split('%');
                     string _amount = _req_list[0];
+                    _amount = unwholify(_amount);
                     int _top;
                     int _bottom;
                     string _unit = _req_list[1];
@@ -110,6 +111,7 @@ namespace blender.Models
                 {
                     string[] _req_list = _req.Split('%');
                     string _amount = _req_list[0];
+                    _amount = unwholify(_amount);
                     int _top;
                     int _bottom;
                     string _unit = _req_list[1];
@@ -141,5 +143,19 @@ namespace blender.Models
             this.requires = reqs;
         }
 
+        public static string unwholify (string _amount)
+        {
+            if (_amount.Contains(' '))
+            {
+                string[] wf = _amount.Split(' ');
+                string[] frac = wf[1].Split('/');
+                int whole = Convert.ToInt32(wf[0]);
+                int numerator = Convert.ToInt32(frac[0]);
+                int denominator = Convert.ToInt32(frac[1]);
+                numerator = (whole * denominator) + numerator;
+                _amount = $"{numerator}/{denominator}";
+            }
+            return _amount;
+        }
     }
 }

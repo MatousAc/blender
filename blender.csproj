@@ -129,8 +129,10 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Variables\app_variables.cs" />
+    <Compile Include="Controllers\app_variables_set.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\unitTypeController.cs" />
+    <Compile Include="features\features.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -207,7 +209,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>site.scss</DependentUpon>
     </Content>
-    <Content Include="Content\sass\app.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -222,6 +223,7 @@
       <LastGenOutput>RecipeModel.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\app.js" />
+    <Content Include="Scripts\features.js" />
     <Content Include="Scripts\requires.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />

@@ -9,10 +9,10 @@
     <script src="~/Scripts/app.js"></script>
     <script src="~/Scripts/@ViewBag.extrascript"></script>
     <link rel="stylesheet" href="~/Content/sass/site.css" />
-    <link rel="stylesheet" href="~/Content/sass/app.css" />
+    <link rel="stylesheet" href="~/Content/sass/site.css" />
     <link rel="stylesheet" href="~/Content/sass/@ViewBag.extrastylesheet" />
 </head>
-<body>
+<body onload="getSystem()">
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -29,10 +29,15 @@
                     <li>@Html.ActionLink("Categories", "Index", "categories")</li>
                     <li>@Html.ActionLink("Ingredients", "Index", "ingredients")</li>
                 </ul>
-                <label class="switch">
-                    <input type="checkbox" onclick="toggleSystem()">
-                    <span class="slider round"></span>
-                </label>
+                <span class="nav navbar-nav nav-text-white">imperial</span>
+                <form method="post" action="Home">
+                    <label class="switch">
+                        <input id="system" type="checkbox"/> <!--onclick="toggleSystem()"-->
+                        <span class="slider round"></span>
+                    </label>
+                    <input type="submit" value="toggleSystem()"/>
+                </form>
+                <span class="nav navbar-nav nav-text-white">metric</span>
             </div>
         </div>
     </div>

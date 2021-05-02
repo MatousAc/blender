@@ -38,6 +38,18 @@ loadIngredient = function (amount, units, ingredient) {
     let new_requires = requires_template.cloneNode(true)
     new_requires.removeAttribute("id")
     new_requires.classList.add("requires")
+
+    // here I want to convert the fraction to a mixed number
+    //if (amount.includes("/")) {
+    //    let numerator = amount.split('/')[0]
+    //    let denominator = amount.split('/')[1]
+    //    if (numerator >= denominator) {
+    //        let wholePart = Math.floor(numerator / denominator)
+    //        numerator = numerator % denominator
+    //        amount = `${wholePart} ${numerator}/${denominator}`
+    //    }
+    //}
+
     info = new_requires.children[1].children[0]
     info.children[0].value = amount
     info.children[1].value = units

@@ -208,11 +208,16 @@
       <Generator>SassTranspiler</Generator>
       <LastGenOutput>site.css</LastGenOutput>
     </None>
+    <Content Include="Content\sass\blender.css" />
+    <Content Include="Content\sass\display.css" />
+    <Content Include="Content\sass\grid.css" />
+    <Content Include="Content\sass\keyframes.css" />
     <Content Include="Content\sass\site.css">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>site.scss</DependentUpon>
     </Content>
+    <Content Include="Content\sass\vars.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

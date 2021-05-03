@@ -53,6 +53,7 @@ C:\Users\Ac\Desktop\Code\C#\blender\bin\roslyn\VBCSCompiler.exe.config
 C:\Users\Ac\Desktop\Code\C#\blender\bin\Antlr3.Runtime.dll
 C:\Users\Ac\Desktop\Code\C#\blender\bin\EntityFramework.dll
 C:\Users\Ac\Desktop\Code\C#\blender\bin\EntityFramework.SqlServer.dll
+C:\Users\Ac\Desktop\Code\C#\blender\bin\Humanizer.dll
 C:\Users\Ac\Desktop\Code\C#\blender\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\Ac\Desktop\Code\C#\blender\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\Ac\Desktop\Code\C#\blender\bin\Newtonsoft.Json.dll
@@ -66,6 +67,7 @@ C:\Users\Ac\Desktop\Code\C#\blender\bin\System.Web.WebPages.Razor.dll
 C:\Users\Ac\Desktop\Code\C#\blender\bin\WebGrease.dll
 C:\Users\Ac\Desktop\Code\C#\blender\bin\EntityFramework.xml
 C:\Users\Ac\Desktop\Code\C#\blender\bin\EntityFramework.SqlServer.xml
+C:\Users\Ac\Desktop\Code\C#\blender\bin\Humanizer.xml
 C:\Users\Ac\Desktop\Code\C#\blender\bin\System.Web.Helpers.xml
 C:\Users\Ac\Desktop\Code\C#\blender\bin\System.Web.Mvc.xml
 C:\Users\Ac\Desktop\Code\C#\blender\bin\System.Web.Optimization.xml
@@ -76,13 +78,6 @@ C:\Users\Ac\Desktop\Code\C#\blender\bin\System.Web.WebPages.Razor.xml
 C:\Users\Ac\Desktop\Code\C#\blender\bin\Newtonsoft.Json.xml
 C:\Users\Ac\Desktop\Code\C#\blender\bin\Antlr3.Runtime.pdb
 C:\Users\Ac\Desktop\Code\C#\blender\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\Ac\Desktop\Code\C#\blender\obj\Debug\blender.csprojAssemblyReference.cache
-C:\Users\Ac\Desktop\Code\C#\blender\obj\Debug\blender.csproj.CoreCompileInputs.cache
-C:\Users\Ac\Desktop\Code\C#\blender\obj\Debug\blender.csproj.CopyComplete
-C:\Users\Ac\Desktop\Code\C#\blender\obj\Debug\blender.dll
-C:\Users\Ac\Desktop\Code\C#\blender\obj\Debug\blender.pdb
-C:\Users\Ac\Desktop\Code\C#\blender\bin\Humanizer.dll
-C:\Users\Ac\Desktop\Code\C#\blender\bin\Humanizer.xml
 C:\Users\Ac\Desktop\Code\C#\blender\bin\af\Humanizer.resources.dll
 C:\Users\Ac\Desktop\Code\C#\blender\bin\ar\Humanizer.resources.dll
 C:\Users\Ac\Desktop\Code\C#\blender\bin\az\Humanizer.resources.dll
@@ -129,3 +124,8 @@ C:\Users\Ac\Desktop\Code\C#\blender\bin\vi\Humanizer.resources.dll
 C:\Users\Ac\Desktop\Code\C#\blender\bin\zh-CN\Humanizer.resources.dll
 C:\Users\Ac\Desktop\Code\C#\blender\bin\zh-Hans\Humanizer.resources.dll
 C:\Users\Ac\Desktop\Code\C#\blender\bin\zh-Hant\Humanizer.resources.dll
+C:\Users\Ac\Desktop\Code\C#\blender\obj\Debug\blender.csprojAssemblyReference.cache
+C:\Users\Ac\Desktop\Code\C#\blender\obj\Debug\blender.csproj.CoreCompileInputs.cache
+C:\Users\Ac\Desktop\Code\C#\blender\obj\Debug\blender.csproj.CopyComplete
+C:\Users\Ac\Desktop\Code\C#\blender\obj\Debug\blender.dll
+C:\Users\Ac\Desktop\Code\C#\blender\obj\Debug\blender.pdb

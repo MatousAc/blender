@@ -1,15 +1,15 @@
-/* color sheme and gradients */
+﻿/* color sheme and gradients */
 :root {
     /* colors */
-    --color-primary: #FA7921;
-    --color-secondary: #F3DE2C;
-    --color-tertiary: #533B4D;
-    --color-quaternary: #0075C4;
-    --color-quinary: #F5DDDD;
-    --color-senary: #558B2F;
-    --color-septenary: #7FB800;
-    --color-octonary: #C2185B;
-    --color-nonary: #D81B60;
+    --color-primary: #221E22;
+    --color-secondary: #31263E;
+    --color-tertiary: #44355B;
+    --color-quaternary: #EE5622;
+    --color-quinary: #ECA72C;
+    --color-senary: #B2B2B2;
+    --color-septenary: #E9E3E6;
+    --color-octonary: #ED7F27;
+    --color-nonary: #ED932A;
     /* gradients */
     --primary-gradient: linear-gradient(-5deg, var(--color-secondary), var(--color-primary));
     --tertiary-gradient: linear-gradient(-5deg, var(--color-tertiary), var(--color-quaternary));

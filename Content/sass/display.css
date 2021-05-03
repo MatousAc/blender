@@ -5,8 +5,8 @@
     display: flex;
     flex-direction: column;
     /* padding: 5%; */
-    max-width: 1000px;
-    margin: 2% 5%;
+    /* max-width: 1000px; */
+    /* margin: 2% 5%; */
     border-radius: var(--border-radius-display-box);
     font-size: 16px;
 }
@@ -40,10 +40,10 @@
     border-bottom-width: 6px;
 }
 
-    .display .header p {
-        margin-block-start: 0;
-        margin-block-end: 0;
-    }
+.display .header p {
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
 
 .display .body {
     display: grid;
@@ -54,14 +54,14 @@
     margin-bottom: 4%;
 }
 
-    .display .body .description {
-        letter-spacing: 1px;
-        /* font-size: var(--font-size-larger); */
-        background-color: var(--color-tertiary);
-        padding: 5%;
-        border-radius: var(--border-radius-display-box);
-        color: white;
-    }
+.display .body .description {
+    letter-spacing: 1px;
+    /* font-size: var(--font-size-larger); */
+    background-color: var(--color-tertiary);
+    padding: 5%;
+    border-radius: var(--border-radius-display-box);
+    color: white;
+}
 
     .display .body .timeinvest,
     .display .body .servings,
@@ -72,39 +72,32 @@
         padding: .1% 7%;
         border-radius: 30px;
         font-weight: bold;
-    }
+}
 
-    .display .body .timeinvest {
-        background: #c2c2c2;
-    }
+.display .body .timeinvest {
+    background: #c2c2c2;
+}
 
-    .display .body .servings {
-        background: var(--color-quaternary);
-        color: white;
-    }
-
-    .display .body .source {
-        background: var(--color-primary);
-        color: white;
-    }
+.display .body .source {
+    background: var(--color-primary);
+    color: white;
+}
 
 
-    .display .body img {
-        object-fit: cover;
-        width: 100%;
-        height: 100%;
-        box-shadow: 0 0 6px #6e6e6e;
-    }
+.display .body img {
+    object-fit: cover;
+    width: 300px;
+    box-shadow: 0 0 6px #6e6e6e;
+}
 
-    .display .body .ingredients p:nth-child(1),
-    .display .body .instructions p:nth-child(1) {
-        font-size: var(--font-size-large);
-    }
+.display .body .ingredients p:nth-child(1),
+.display .body .instructions p:nth-child(1) {
+    font-size: var(--font-size-large);
+}
 
-    .display .body .ingredients #ingredients {
-        white-space: pre;
-        line-height: 2.2;
-    }
+.display .body .ingredients #ingredients {
+    line-height: 2.2;
+}
 
 .display .footer {
     display: flex;
@@ -113,6 +106,7 @@
     border-bottom-left-radius: var(--border-radius-display-box);
     background-color: var(--color-tertiary);
     color: white;
+    align-items: center;
 }
 
     .display .footer #categories {
@@ -133,7 +127,7 @@
 }
 
 #source::before {
-    content: "From ";
+    content: "Calories per serving: ";
 }
 
 #created_at::before {

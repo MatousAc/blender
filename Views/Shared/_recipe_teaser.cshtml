@@ -7,28 +7,22 @@
         string categories = this.ViewData.ContainsKey("categories") ? this.ViewData["categories"].ToString() : null;
     }
 
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => name)
-        </td>
-        <td>
-            <img src="@image_url" alt="@name" width="100px">
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => skill_level)
-        </td>
-        <td>
-            @if (categories != null)
+<div class="flexbox_teaser" onclick="window.location.replace('/recipes/details/'+@recipe_id)">
+    <img class="my-auto mx-auto" src="@image_url" alt="@name">
+    <div class="titlediv">
+        <div class="row space-row">
+            <p class="recipe-name">@Html.DisplayFor(modelItem => name)</p>
+            <p class="recipe-level">@Html.DisplayFor(modelItem => skill_level)</p>
+        </div>
+        <div class="row categories space-row">
+             @if (categories != null)
             {
                 foreach (var category in categories.Split('%'))
                 {
-                    @Html.ActionLink(@category, "../categories/Details", new { id = category })
+                    @Html.ActionLink(@category, "../categories/Details", new { id = category})
                 }
             }
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "../recipes/Edit", new { id = recipe_id }) |
-            @Html.ActionLink("Recipe", "../recipes/Details", new { id = recipe_id }) |
-            @Html.ActionLink("Delete", "../recipes/Delete", new { id = recipe_id })
-        </td>
-    </tr>
+        </div>
+    </div>
+    
+</div>

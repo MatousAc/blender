@@ -1,37 +1,30 @@
 ﻿@model blender.Models._category
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "category";
 }
 
-<h2>Details</h2>
+<div class="row mb-4">
+    <div class="col-8">
+        <p id="title">@Html.DisplayFor(model => model.name)</p>
+    </div>
+    <div class="col-4 center-contents">
+        @Html.ActionLink("categories", "Index", null, null, new { @class = "button create-button my-auto mx-auto"} )
+    </div>
+</div>
 
 <div>
-    <h4>category</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.name)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.name)
-        </dd>
-    </dl>
-
-
-    @foreach (var item in Model.recipes)
-    {
+    <div class="grid">
+        @foreach (var item in Model.recipes)
         {
-            Html.RenderPartial("_recipe_teaser", new ViewDataDictionary {
-              { "recipe_id", item.recipe_id },
-              { "name", item.name },
-              { "image_url", item.image_url },
-              { "skill_level", item.skill_level } });
+            {
+                Html.RenderPartial("_recipe_teaser", new ViewDataDictionary {
+                { "recipe_id", item.recipe_id },
+                { "name", item.name },
+                { "image_url", item.image_url },
+                { "skill_level", item.skill_level } });
+            }
         }
-    }
-
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Back to List", "Index")
-</p>

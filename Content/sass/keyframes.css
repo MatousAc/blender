@@ -4,3 +4,18 @@
         opacity: 1
     }
 }
+
+
+@keyframes shake {
+    90% { transform: translate(1px, 0) rotate(1deg); }
+    91% { transform: translate(-1px, 0) rotate(-1deg); }
+    92% { transform: translate(-3px, 0) rotate(-2deg); }
+    93% { transform: translate(3px, 0) rotate(2deg); }
+    94% { transform: translate(1px, -1px) rotate(1deg); }
+    95% { transform: translate(-1px, 0) rotate(-1deg); }
+    96% { transform: translate(-3px, 1px) rotate(-2deg); }
+    97% { transform: translate(3px, 0) rotate(2deg); }
+    98% { transform: translate(-1px, 0) rotate(-2deg); }
+    99% { transform: translate(1px, 0) rotate(0deg); }
+    100% { transform: translate(1px, 0) rotate(2deg); }
+}

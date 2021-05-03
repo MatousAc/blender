@@ -3,7 +3,10 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - blender</title>
+    <title>blender - @ViewBag.Title </title>
+    <link rel="icon" 
+      type="image/png" 
+      href="/Content/images/blender-icon.svg">
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <script src="~/Scripts/app.js"></script>
@@ -17,7 +20,7 @@
     <link rel="stylesheet" href="~/Content/sass/@ViewBag.extrastylesheet" />
 </head>
 <body onload="getSystem()">
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -28,31 +31,32 @@
                 @Html.ActionLink("Blender", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
+                <ul class="navigation navbar-nav">
                     <li>@Html.ActionLink("Recipes", "Index", "recipes")</li>
                     <li>@Html.ActionLink("Categories", "Index", "categories")</li>
                     <li>@Html.ActionLink("Ingredients", "Index", "ingredients")</li>
+                    <div id="slider_div" class="row">
+                        <p class="nav-text-white col-4 my-auto text-right">Imperial</p>
+                        <form id="system_form" class="col-4 my-auto" method="post" action="../AppVariables/toggleSystem?syst=imperial&callingPage=/">
+                            @Html.AntiForgeryToken()
+                            <label class="switch">
+                                <input id="system" type="checkbox" onclick="toggleSystemPost(); toggleSystemSession();" />
+                                <span class="slider round"></span>
+                            </label>
+                            <!-- <input type="submit" value="system toggle" class="btn btn-default" /> -->
+                        </form>
+                        <p class="nav-text-white col-4 my-auto text-left">Metric</p>
+                    </div>
                 </ul>
-                <span class="nav navbar-nav nav-text-white">imperial</span>
-                <form id="system_form" method="post" action="../AppVariables/toggleSystem?syst=imperial&callingPage=/">
-                    @Html.AntiForgeryToken()
-                    <label class="switch">
-                        <input id="system" type="checkbox" onclick="toggleSystemPost(); toggleSystemSession();" />
-                        <span class="slider round"></span>
-                    </label>
-                    <!-- <input type="submit" value="system toggle" class="btn btn-default" /> -->
-                </form>
-
-                <span class="nav navbar-nav nav-text-white">metric</span>
             </div>
         </div>
     </div>
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <footer>
+        @* <footer>
             <p>&copy; @DateTime.Now.Year</p>
-        </footer>
+        </footer> *@
     </div>
 
     @Scripts.Render("~/bundles/jquery")

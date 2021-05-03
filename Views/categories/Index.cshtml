@@ -1,27 +1,28 @@
 ﻿@model IEnumerable<blender.Models.category>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "categories";
 }
 
-<h2>Index</h2>
+<div class="row mb-4">
+    <div class="col-8">
+        <p id="title">categories</p>
+    </div>
+    <div class="col-4 center-contents">
+        @Html.ActionLink("add category", "Create", null, null, new { @class = "button create-button my-auto mx-auto"} )
+    </div>
+</div>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
-    <tr>
-        <th>@Html.DisplayNameFor(model => model.name)</th>
-    </tr>
 
 @foreach (var item in Model) {
     <tr>
-        <td>
+        <td class="category_display">
             @Html.DisplayFor(modelItem => item.name)
         </td>
         <td>
-            @Html.ActionLink("Recipes", "Details", new { id = item.name })
-            @Html.ActionLink("Delete", "Delete", new { id = item.name })
+            @Html.ActionLink("recipes in category", "Details", new { id = item.name }, new { @class = "button smaller-button my-auto mx-auto"})
+            @Html.ActionLink("delete category", "Delete", new { id = item.name }, new { @class = "button smaller-button my-auto mx-auto"})
         </td>
     </tr>
 }

@@ -1,101 +1,81 @@
 ﻿@model blender.Models._recipe
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = @Model.name;
     ViewBag.extrascript = "features.js";
 }
 
-<h2>Details</h2>
+    <div class="display">
+        <div class="header">
+            <p id="title" class="title">
+                @Html.DisplayFor(model => model.name)
+            </p>
+        </div>
+        <div class="body">
+            <div id="info" class="info">
+                <div class="description">
+                    <p id="description">
+                        Cook Time: 
+                        @Html.DisplayFor(model => model.cook_mins)
+                    </p>
+                </div>
+                <div class="timeinvest">
+                    <p id="timeinvest">
+                        @Html.DisplayFor(model => model.prep_mins)
+                    </p>
+                </div>
+                <div class="source">
+                    <p id="source">
+                        @Html.DisplayFor(model => model.calories)
+                    </p>
+                </div>
+            </div>
+            <img id="imageURL" src="@Model.image_url" alt="@Model.name">
+            <div class="ingredients">
+                <p>Ingredients</p>
+                <div class="row">
+                        Servings  
+                        @Html.EditorFor(model => model.serves,  new { htmlAttributes = new { @min = Model.serves, @class = "col-4 servings"} })
+                    
+                <button class="button create-button col-4" onclick="loadNewServings()">Adjust</button>
+                </div>
+                <p id="ingredients">
+                    @foreach (string requirement in ViewData["_requires"].ToString().Split('@'))
+                    {
+                        <p>
+                            @foreach (string aui in requirement.Split('%'))
+                            {
+                                <span>
+                                    @aui
+                                </span>
+                            }
+                        </p>
+                    }
+                </p>
+            </div>
+            <div class="instructions">
+                <p>Instructions</p>
+                <p id="instructions">
+                    @Html.DisplayFor(model => model.instructions)
+                </p>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="category_display_s">
+                @foreach (var category in Model.categories)
+                {
+                    @Html.ActionLink(@category, "../categories/Details", new { @id = category })
+                }
+            </div>
+            @Html.DisplayFor(model => model.skill_level)
+            <form method="post" action="~/recipes/Duplicate/@Model.recipe_id">
+                @Html.AntiForgeryToken()
+                <input type="submit" value="Duplicate Recipe" class="button create-button" />
+            </form>
+        </div>
+    </div>
 
 <div>
-    <h4>recipe</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.instructions)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.instructions)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.prep_mins)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.prep_mins)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.cook_mins)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.cook_mins)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.calories)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.calories)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.image_url)
-        </dt>
-
-        <dd>
-            <img src="@Model.image_url" alt="@Model.name" width="100px">
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.skill_level)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.skill_level)
-        </dd>
-
-        <td>
-            @foreach (var category in Model.categories)
-            {
-                @Html.ActionLink(@category, "../categories/Details", new { @id = category })
-            }
-        </td>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.serves)
-        </dt>
-
-        <dd>
-            @Html.EditorFor(model => model.serves, new { htmlAttributes = new { @min = Model.serves} })
-        </dd>
-        <button onclick="loadNewServings()">Adjust</button>
-
-        <td>
-            @foreach (string requirement in ViewData["_requires"].ToString().Split('@'))
-            {
-                <span>
-                    @foreach (string aui in requirement.Split('%'))
-                    {
-                        <span>
-                            @aui
-                        </span>
-                    }
-                </span>
-            }
-        </td>
 
     </dl>
 </div>
@@ -103,11 +83,5 @@
     @Html.ActionLink("Edit", "Edit", new { id = Model.recipe_id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
-
-<form method="post" action="~/recipes/Duplicate/@Model.recipe_id">
-    @Html.AntiForgeryToken()
-    <input type="submit" value="Duplicate Recipe" class="btn btn-default" />
-</form>
-
 
 

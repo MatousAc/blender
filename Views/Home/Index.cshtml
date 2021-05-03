@@ -1,31 +1,29 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Welcome";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+<div class="row">
+    <div class="col-8">
+        <h1 id="blender_title">blender</h1>
+        <p class="lead">create, share, and change your food</p>
+        <p><a href="/recipes" class="button home-button">get started!</a></p>
+    </div>
+    <div class="col-4">
+        <img id="blender_blender" src="/Content/images/blender-icon-black.svg"/>
+    </div>
 </div>
 
 <div class="row">
     <div class="col-md-4">
-        <h2>Getting started</h2>
+        <h2>create a recipe</h2>
         <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
+            don't settle for the few recipes that come with blender. make your own delicious recipes and let your creativity flow!
         </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+        <p><a class="button home-button" href="/recipes/create">write a recipe</a></p>
     </div>
     <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+        <h2>categories</h2>
+        <p>all the recipes are categoried in various ways. you can choose whatever system suits you best. check out the different categories here!</p>
+        <p><a class="button home-button" href="/categories">check it out</a></p>
     </div>
 </div>

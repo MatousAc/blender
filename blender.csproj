@@ -295,6 +295,7 @@
     <Content Include="Views\recipes\Edit.cshtml" />
     <Content Include="Views\recipes\Index.cshtml" />
     <Content Include="Views\Shared\_recipe_teaser.cshtml" />
+    <Content Include="Views\Shared\_title.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
